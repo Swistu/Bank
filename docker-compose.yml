@@ -1,8 +1,9 @@
-
 version: '3'
 services:
   front:
-    image: strona
+    build:
+      context: ./Front
+      dockerfile: Dockerfile
     ports:
      - "80:80"
   db:
@@ -12,7 +13,9 @@ services:
     volumes:
      - "aplikacja:/var/lib/mysql"
   back:
-    image: backend
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
     ports:
      - "8181:8181"
     expose:
@@ -21,4 +24,3 @@ services:
      - db
 volumes:
   aplikacja:
-
